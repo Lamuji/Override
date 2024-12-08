@@ -1,0 +1,4 @@
+By analysing the binary (dogbolt) we can see that the program wait for an input and as long as the input isn't equal to 0x149c, the program will display invalid password.
+0x149c being 5276 in hexadecimal.
+
+Once logged into level01, just have to go to /home/users/level01/ and cat the .pass file to get the flag !
