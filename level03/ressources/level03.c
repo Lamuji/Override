@@ -3,27 +3,19 @@
 #include <string.h>
 #include <time.h>
 
-//version simplifier du code decompile
-
-
-
-// Demande un nombre entier non signé à l'utilisateur
-
-// Fonction de décryptage
 int decrypt(char key) {
-    char message[] = "Q}|u`sfg~sf{}|a3";  // Message codé
-    char target[] = "Congratulations!";   // Message attendu
+    char message[] = "Q}|u`sfg~sf{}|a3";  
+    char target[] = "Congratulations!";   
     size_t len = strlen(message);
 
-    // Déchiffrer le message
+    
     for (size_t i = 0; i < len; i++) {
         message[i] ^= key;
     }
 
-    // Comparer avec le message attendu
     if (strcmp(message, target) == 0) {
         puts("Accès autorisé !");
-        system("/bin/sh");  // Lance un shell
+        system("/bin/sh");  
         return 0;
     } else {
         puts("Mot de passe invalide !");
@@ -31,16 +23,16 @@ int decrypt(char key) {
     }
 }
 
-// Teste un décryptage avec une clé donnée
+
 int test(int input, int reference) {
     int diff = reference - input;
-    if (diff >= 1 && diff <= 21) {  // Limité aux clés valides
+    if (diff >= 1 && diff <= 21) {  
         return decrypt(diff);
     }
-    return decrypt(rand() % 256);  // Décryptage avec une clé aléatoire
+    return decrypt(rand() % 256);  
 }
 
-// Fonction principale
+
 int main() {
     srand(time(NULL));
 
@@ -49,8 +41,8 @@ int main() {
     puts("********************************");
     printf("Mot de passe : ");
 
-    unsigned int input = get_unum();  // Demande le mot de passe
-    test(input, 0x1337d00d);          // Compare avec la référence
+    unsigned int input = get_unum();  
+    test(input, 0x1337d00d);          
 
     return 0;
 }
